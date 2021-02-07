@@ -1,0 +1,45 @@
+CHANGE LOG
+
+11/01/2021
+- cleaned up HTML code
+- seperated js code
+- made radio buttons functioning
+- added enter submit function to inputs
+- everything changes instantly on input instead of pressing a final apply button
+- added randomise function on load and on randomise button
+- added module quantity & size, although size does not fully function, see comment on line 200.
+module size function can be fully deprecated as it functions really similarly to modules quantity.
+- added changing the image function on dropdown event type select (rename the files accordingly as qa.jpg, lecture.jpg)
+
+13/01/2021
+- cleaned up folder structure
+- improved CSS of gui div
+- improved CSS of main div (also for making zoom work)
+- removed negative margin on typography as it messed up grid
+- cleaned up HTML code
+  + indentation
+  + implement new folder structure for files
+  + improved names for labels and attributes (no capitals and use hyphens for connecting words)
+  + grouping of form fields that belong to each other
+  + dividing ui block into sections about certain elements (color, content, etc.)
+  + don't use id "name" as it is a reserved attribute
+  + removed uncommented code since you have backup code anyway
+- added missing module size slider (not sure if this was necessary?)
+- cleaning up JS code
+  + adding semicolons where missing, be consistent better to use them
+  + slight structure change, first all variables -> then functions
+  + be consistent in either using const/let or var but not mixing!
+- removed color change based on event type
+- added option for selecting color based on department
+- added option for changing label text and label background color
+- implemented tile gradients based on department naming (colors are in the gradient tile images with transparent background!)
+- screenshot functionality can only work when tool is on a web server! otherwise CORS policy will break it
+- added zoom function
+- fixed sizing and grid issues by splitting labels and grid pattern
+
+06/02/2021
+- added size sliders functionality
+- added formats
+
+TO DO
+[ ] make typography not based on window size! (currently it uses 'vh' unit, use pixels so that its regardless of window) and normalize h1!

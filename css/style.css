@@ -1,0 +1,379 @@
+@font-face {
+  font-family: 'Atlas Grotesk';
+  src: url('../font/Atlas Grotesk Web-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atlas Grotesk';
+  src: url('../font/Atlas Grotesk Web-Bold.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: lighter;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Atlas Grotesk';
+}
+
+#gui {
+  height: 150px;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  padding: 20px 0 20px 20px;
+  top: 0;
+  box-sizing: border-box;
+  justify-content: space-between;
+  background: rgba(52, 52, 52, 1);
+  color: white;
+  font-size: 14px;
+  line-height: 16px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+#gui label {
+  margin-bottom: 6px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+#gui input, #gui button, #gui select {
+  height: 20px;
+  width: 100%;
+  display: block;
+  margin-bottom: 6px;
+  padding: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 16px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+#gui>form, #gui>div {
+  width: auto;
+  display: flex;
+  margin: 0;
+  padding: 0 20px 0 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+ol, ul {
+  list-style: none;
+  padding: 0;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  /*content: '';*/
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+canvas {
+  margin: 0;
+  padding: 0;
+}
+
+#zoom {
+  position: fixed;
+  display: block;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#zoom>* {
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  float: left;
+  margin: 0 5px 5px 0;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(52, 52, 52, 1);
+  border-radius: 2px;
+}
+
+#zoom>*:hover {
+  cursor: pointer;
+}
+
+#zoom>* p {
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+
+/* actual css */
+:root {
+  --text-color: black;
+}
+
+#container {
+  position: fixed;
+  top: 130px;
+  bottom: 0;
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  background-color: rgba(232, 232, 232, 1);
+}
+
+#main {
+  display: block;
+  position: relative;
+  outline: 1px solid rgba(0, 0, 0, 0.3);
+  transition: all 0.24s linear;
+  transform: scale(1);
+  margin: 50px auto;
+  width: 1500px;
+  height: 1500px;
+  /* width: 1125px;
+  height: 2000px; */
+}
+
+main {
+  background-color: white;
+  overflow: hidden;
+}
+
+#textLabels {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 37.5px);
+  grid-template-rows: repeat(auto-fit, 37.5px);
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  letter-spacing: -0.04em;
+}
+
+.modules>.modules__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 37.5px);
+  grid-template-rows: repeat(auto-fit, 37.5px);
+  grid-auto-flow: dense;
+  margin: auto;
+  padding: 0;
+  width: 1500px;
+  height: 1500px;
+  /* width: 1125px;
+  height: 2000px; */
+}
+
+.modules>.modules__list>li {
+  /* display:inline; */
+  position: relative;
+}
+
+.modules>.modules__list>li:nth-child(5n) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.modules>.modules__list>li:nth-child(20n) {
+  grid-column: span 6;
+  grid-row: span 6;
+}
+
+.modules>.modules__list>li:nth-child(42n) {
+  grid-column: span 12;
+  grid-row: span 12;
+}
+.modules>.modules__list>li:nth-child(170n) {
+  grid-column: span 16;
+  grid-row: span 16;
+}
+
+.modules>.modules__list>li>figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.modules>.modules__list>li>figure>img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.element {
+  font-family: "Atlas Grotesk";
+  letter-spacing: -0.04em;
+  justify-content: center;
+  align-items: center;
+  display: none !important;
+}
+
+#KABK {
+  font-size: 235px;
+  font-weight: lighter;
+  grid-column: span 17;
+  grid-row: span 6;
+  display: flex;
+  letter-spacing: -0.08em;
+}
+
+#title {
+  font-size: 130px;
+  font-weight: lighter;
+  grid-column: span 18;
+  grid-row: span 7;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+}
+
+#subtitle {
+  font-size: 80px;
+  font-weight: lighter;
+  grid-column: span 16;
+  grid-row: span 3;
+  letter-spacing: -0.06em;
+}
+
+#info {
+  font-size: 70px;
+  font-weight: lighter;
+  grid-column: span 20;
+  grid-row: span 4;
+  letter-spacing: -0.06em;
+  /*margin-bottom: -3px;*/
+}
+
+#info1 {
+  font-size: 65px;
+  font-weight: lighter;
+  grid-column: span 14;
+  grid-row: span 2;
+  letter-spacing: -0.07em;
+  /*margin-bottom: -3px;*/
+}
+
+#info2 {
+  font-size: 65px;
+  font-weight: lighter;
+  grid-column: span 19;
+  grid-row: span 2;
+  letter-spacing: -0.06em;
+  /*margin-bottom: -3px;*/
+}
+
+#peek {
+  font-size: 100px;
+  grid-column: span 10;
+  grid-row: span 3;
+  letter-spacing: -0.06em;
+}
+
+#time {
+  font-size: 70px;
+  font-weight: lighter;
+  grid-column: span 15;
+  grid-row: span 2;
+  letter-spacing: -0.04em;
+}
+
+#nametime {
+  font-size: 65px;
+  font-weight: lighter;
+  grid-column: span 10;
+  grid-row: span 1;
+}
+
+#name_field {
+  font-size: 65px;
+  font-weight: lighter;
+  grid-column: span 10;
+  grid-row: span 2;
+  display: none;
+  letter-spacing: -0.04em;
+}
+#other_field {
+  font-size: 65px;
+  font-weight: lighter;
+  grid-column: span 10;
+  grid-row: span 2;
+  display: none;
+  letter-spacing: -0.04em;
+}
+
+h1 {
+  padding-top: 5px;
+  font-size: inherit;
+}
+
+#peek h1 {
+  padding-top: 5px;
+}
+
+h2 {
+  font-size: calc(2.2vh/1.7);
+  ;
+  letter-spacing: -0.04em;
+}
+#time h1 {
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+#KABK h1 {
+  margin-top: 5px;
+}
+
+#title h1 {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+#subtitle h1 {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+#info h1, #info1 h1, #info2 h1, #peek h1 {
+  margin-left: 5px;
+  /* margin-top: 7px; */
+}
+
+.fillerCell {
+  grid-row: span 2;
+  grid-column: span 2;
+}

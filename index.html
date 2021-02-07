@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>KABK Open Day Creation Tool</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./scripts/html2canvas.js"></script>
+</head>
+
+<body>
+  <div id="gui">
+    <div>
+      <form id="form-department">
+        <label for="department">Department</label>
+        <select name="department" id="department">
+          <option value="ba" selected>Bachelor</option>
+          <option value="ma">Master</option>
+          <option value="bama">Graphic Design</option>
+        </select>
+      </form>
+      <form id="form-event">
+        <label for="event">Event type</label>
+        <select name="event" id="event">
+          <option value="Lecture">Lecture</option>
+          <option value="Peek In">Peek In</option>
+          <option value="Q/A">Q&A</option>
+          <option value="Spotlight">Spotlight</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Other">Other</option>
+        </select>
+      </form>
+      <form id="form-event-size">
+        <label for="size-event">Size <span id="size-event">10</span></label>
+        <input type="range" min="1" max="20" value="10" name="size-range" class="slider" id="size-range">
+      </form>
+    </div>
+    <div>
+      <form id="form-pattern">
+        <label for="pattern">Pattern</label>
+        <select name="pattern" id="pattern">
+          <option value="1">Pattern 1</option>
+          <option value="2">Pattern 2</option>
+          <option value="3">Pattern 3</option>
+          <option value="4">Pattern 4</option>
+          <option value="5">Pattern 5</option>
+          <option value="6">Pattern 6</option>
+        </select>
+      </form>
+      <form id="form-quantity-slider">
+        <label for="quantity-range">Modules Quantity: <span id="quantity-number">500</span></label>
+        <input type="range" min="1" max="1000" value="500" name="quantity-range" class="slider" id="quantity-range">
+        <!--      <label for="size-range">Modules Size: <span id="size-number">100</span></label>-->
+        <!--      <input type="range" min="1" max="200" value="100" name="size-range" class="slider" id="size-range">-->
+      </form>
+    </div>
+    <div>
+      <form id="form-date">
+        <label for="date-start-input">Event Date</label>
+        <input type="date" id="date-start-input" placeholder="Event Date" value="January 22" />
+      </form>
+      <form id="form-time">
+        <label for="time-start-input">Time slots</label>
+        <input type="time" id="time-start-input" placeholder="Event Time" value="16:00" />
+        <input type="time" id="time-end-input" placeholder="Event Time" value="17:00" />
+      </form>
+    </div>
+    <div>
+      <form id="form-name">
+        <label for="name-field">Extra content 1</label>
+        <input type="text" id="name-field" placeholder="Other content">
+      </form>
+      <form id="form-name-size">
+        <label for="size-name">Size <span id="size-name">10</span></label>
+        <input type="range" min="1" max="20" value="10" name="size-range2" class="slider" id="size-range2">
+      </form>
+    </div>
+    <div>
+      <form id="form-other">
+        <label for="other-field">Extra content 2</label>
+        <input type="text" id="other-field" placeholder="Other content">
+      </form>
+      <form id="form-other-size">
+        <label for="size-other">Size <span id="size-other">10</span></label>
+        <input type="range" min="1" max="20" value="10" name="size-range3" class="slider" id="size-range3">
+      </form>
+    </div>
+    <form id="form-typo-label-color">
+      <label for="typo-color">Typography & label color</label>
+      <select name="typo-color" id="typo-color">
+        <option value="1" selected>Primary color</option>
+        <option value="2">Secondary color</option>
+        <option value="3">White</option>
+        <option value="4">Black</option>
+      </select>
+      <select name="label-color" id="label-color">
+        <option value="1">Primary color</option>
+        <option value="2" selected>Secondary color</option>
+        <option value="3">White</option>
+        <option value="4">Black</option>
+      </select>
+    </form>
+    <form id="form-formats">
+      <label for="format">Typography & label color</label>
+      <select name="format" id="format">
+        <option value="post">Post</option>
+        <option value="story">Story</option>
+      </select>
+    </form>
+    <div id="buttons">
+      <label>Export</label>
+      <button type="submit" id="randomiseLabels">Randomise labels</button>
+      <button type="submit" id="randomisePattern">Randomise pattern</button>
+      <button id="a-make">Render screenshot</button>
+      <button id="a-download" style="background-color: rgb(0, 127, 255); display:none;"><a href="#" style="color: white; text-decoration: none;">Download screenshot</a></button>
+    </div>
+  </div>
+
+  <div id="zoom">
+    <span class="zoom-in">
+      <p>+</p>
+    </span>
+    <span class="zoom-out">
+      <p>-</p>
+    </span>
+  </div>
+
+  <div id="container">
+    <div id="main">
+      <main class="modules" id="screenshot">
+        <ul id="textLabels">
+          <li class="visi-element" id="KABK">
+            <figure>
+              <h1>KABK</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="info">
+            <figure>
+              <h1><span id="degree">BA</span> Graphic Design +</h1>
+              <h1>MA Non Linear Narrative</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="info1">
+            <figure>
+              <h1><span id="degree">BA</span> Graphic Design</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="info2">
+            <figure>
+              <h1>MA Non Linear Narrative</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="name_field">
+            <figure>
+              <h1 id="name"></h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="other_field">
+            <figure>
+              <h1 id="other"></h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="title">
+            <figure>
+              <h1>Open Department</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="subtitle">
+            <figure>
+              <h1><span id="date-start">January 22</span>, 2021</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="peek">
+            <figure>
+              <h1>Q/A</h1>
+            </figure>
+          </li>
+          <li class="visi-element" id="time">
+            <figure>
+              <h1><span id="time-start">16:00</span>—<span id="time-end">17:00</span> CET</h1>
+            </figure>
+          </li>
+        </ul>
+        <ul class="modules__list" id="modcontainer">
+          <li class="element">
+            <figure>
+              <h1>KABK</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1><span>BA</span> Graphic Design +</h1>
+              <h1>MA Non Linear Narrative</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1><span>BA</span> Graphic Design</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1>MA Non Linear Narrative</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1>Open Department</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1>January 22, 2021</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1>Q/A</h1>
+            </figure>
+          </li>
+          <li class="element">
+            <figure>
+              <h1>Namefield</h1>
+            </figure>
+          </li>
+
+          <li class="element">
+            <figure>
+              <h1><span>16:00</span> — <span></span>17:00</span> CET</h1>
+            </figure>
+          </li>
+        </ul>
+      </main>
+    </div>
+  </div>
+
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>
