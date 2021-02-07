@@ -209,10 +209,7 @@ main {
   grid-row: span 6;
 }
 
-.modules>.modules__list>li:nth-child(42n) {
-  grid-column: span 12;
-  grid-row: span 12;
-}
+
 .modules>.modules__list>li:nth-child(170n) {
   grid-column: span 16;
   grid-row: span 16;
